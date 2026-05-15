@@ -50,7 +50,7 @@ ispravni i funkcionalni.
 
 ## Napomena za ploču broj 5
 
-Iako na ploči broj 5 integrisani USB Serial/JTAG kontroler ne radi zbog pogrešno programiranog eFuse-a, USB 2.0 interfejs i dalje radi normalno jer je povezan direktno na USB hub i nije zavisan od USB Serial/JTAG kontrolera.
+Iako na ploči broj 5 integrisani USB Serial/JTAG kontroler ne radi zbog pogrešno programiranog eFuse-a (sam ESP32P4 je obeležen sa crnom tačkom) , USB 2.0 interfejs i dalje radi normalno jer je povezan direktno na USB hub i nije zavisan od USB Serial/JTAG kontrolera.
 
 Na ploči broj 5 test projekat:
 
