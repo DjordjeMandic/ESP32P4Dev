@@ -97,7 +97,7 @@ Mogući uzroci uključuju:
 - softversku konfiguraciju projekta
 - problem kompatibilnosti sa USB Hub-om na ploči
 
-Trenutno trajno rešenje nije pronađeno.
+Za vise detalja procitati `esp32p4 usb-serial.md`
 
 ---
 
