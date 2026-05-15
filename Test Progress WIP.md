@@ -59,45 +59,36 @@ Feedback pin je dostupan preko:
 
 # USB / SERIAL / JTAG Problemi – ESP32-P4
 
-Integrisani USB/SERIAL/JTAG kontroler na ESP32-P4 trenutno ne radi pravilno u aplikativnom režimu firmware-a.
+Na ploči broj 5 integrisani USB Serial/JTAG (USJ) kontroler nije funkcionalan zbog greškom programiranog eFuse-a:
 
-## Trenutno stanje
+- `USB_PHY_SEL`
 
-### Radi
+Zbog toga:
 
-- flashing preko USB bootloader moda
-- flashing preko UART0
-- USB enumeracija u ROM boot modu
+- USB flashing preko USJ nije moguć
+- USB serial komunikacija preko USJ nije dostupna
+- JTAG debugging preko USJ nije dostupan
 
-### Ne radi
+Problem utiče isključivo na integrisani USB Serial/JTAG kontroler i ne utiče na USB 2.0 interfejs povezan direktno na USB hub.
 
-- USB enumeracija u aplikativnom režimu firmware-a preko integrisanog USB interfejsa
+Test projekat:
 
----
+- `tusb_serial_device_test`
 
-## Eksperimentalno rešenje
+uspešno radi i pravilno se enumeriše preko USB 2.0 interfejsa i na ploči broj 5, što potvrđuje da su:
 
-Utvrđeno je da USB-serial funkcionalnost proradi kada se povežu:
+- USB hub
+- USB 2.0 PHY
+- USB 2.0 signalne linije
 
-- `H1` data pinovi
-- `H3` data pinovi
+ispravni.
 
-Nakon toga:
+Firmware na ploču broj 5 trenutno se upisuje korišćenjem:
 
-- USB uređaj se pravilno enumeriše
-- USB-serial komunikacija funkcioniše
+- USB-to-Serial TTL adaptera (`CP2102`)
+- UART0 interfejsa (`GPIO37` i `GPIO38`)
 
----
-
-## Potencijalni uzroci problema
-
-Mogući uzroci uključuju:
-
-- hardverski problem ESP32-P4
-- softversku konfiguraciju projekta
-- problem kompatibilnosti sa USB Hub-om na ploči
-
-Za vise detalja procitati `esp32p4 usb-serial.md`
+Za vise detalja procitati `esp32p4 usb.md`
 
 ---
 
@@ -208,33 +199,6 @@ Firmware je moguće flashovati:
 - povezivanjem na:
     - GPIO37 (TX)
     - GPIO38 (RX)
-
----
-
-# Problem sa USB Enumeracijom u Aplikativnom Režimu
-
-U ESP-IDF `menuconfig` podešavanju:
-
-- `stdio` preko UART0 radi pravilno
-- komunikacija preko GPIO37/38 funkcioniše
-
-Međutim:
-
-- USB-serial preko integrisanog USB interfejsa ESP32-P4 ne radi u aplikativnom firmware režimu
-- uređaj se ne enumeriše preko USB Hub-a
-
----
-
-# Eksperimentalno Funkcionalno Rešenje
-
-Jedini trenutno potvrđeni način rada USB-serial funkcionalnosti u aplikativnom režimu jeste:
-
-- povezivanje data linija headera `H1` i `H3`
-
-Nakon toga:
-
-- USB enumeracija funkcioniše
-- USB-serial komunikacija radi pravilno
 
 ---
 

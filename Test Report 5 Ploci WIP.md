@@ -128,10 +128,10 @@ Testovi obuhvataju sledeće funkcionalnosti:
 
 ## Summary (Optional)
 
-| Board | Passed Tests | Failed Tests | Notes                          |
-| ----- | ------------ | ------------ | ------------------------------ |
-| #1    | 10           |              |                                |
-| #2    | 10           |              |                                |
-| #3    | 10           |              |                                |
-| #4    | 10           |              |                                |
-| #5    | 10           | 1            | Pogledati DSI Test Result Note |
+| Board | Passed Tests | Failed Tests | Notes                                                                              |
+| ----- | ------------ | ------------ | ---------------------------------------------------------------------------------- |
+| #1    | 10           |              |                                                                                    |
+| #2    | 10           |              |                                                                                    |
+| #3    | 10           |              |                                                                                    |
+| #4    | 10           |              |                                                                                    |
+| #5    | 10           | 1            | Pogledati DSI Test Result Note<br>USJ (usb-serial-jtag) je na ploci ne upotrebljiv |
