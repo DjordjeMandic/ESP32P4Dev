@@ -199,3 +199,16 @@ ESP32-P4 mora biti u:
 - download/boot režimu
 
 tokom upisivanja firmware-a.
+
+## Spaljen EFUSE na ploči broj 5
+
+Na ploči broj 5 slučajno je programiran eFuse `USB_PHY_SEL`, čime je izvršena zamena mapiranja između USB Serial/JTAG i USB OTG FS PHY interfejsa. Ova promena je trajna i ne može se vratiti.
+
+Nakon promene mapiranja, USB Serial/JTAG interfejs je preusmeren na pinove koji su na ovoj razvojnoj ploči povezani sa ulazima za **IGNITION** i **ILLUMINATION**, zbog čega integrisani USB Serial/JTAG interfejs više nije praktično upotrebljiv na ploči broj 5.
+
+Header **H3** je nakon zamene mapiranja povezan sa USB OTG FS interfejsom i može se koristiti za:
+
+- USB OTG FS komunikaciju
+- korišćenje odgovarajućih GPIO pinova u aplikaciji
+
+Funkcionalnost ostatka sistema nije pogođena ovom promenom, osim nedostupnosti USB Serial/JTAG interfejsa na predviđenom USB konektoru.

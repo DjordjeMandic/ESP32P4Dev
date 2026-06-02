@@ -35,3 +35,7 @@ Ignition: 1
 ```
 
 Na osnovu rezultata može se zaključiti da ulazni sklop ispravno detektuje prisustvo napona u predviđenom radnom opsegu.
+
+### Ploča Broj 5 – Programiran eFuse `USB_PHY_SEL`
+
+Na ploči broj 5 slučajno je programiran eFuse `USB_PHY_SEL`, čime je izvršena trajna zamena mapiranja između USB Serial/JTAG i USB OTG FS PHY interfejsa unutar ESP32-P4 mikrokontrolera. Kao posledica toga, USB Serial/JTAG signalne linije više nisu dostupne na predviđenom USB konektoru, već su povezane na pinove koji su na ovoj razvojnoj ploči iskorišćeni za ulaze **IGNITION** i **ILLUMINATION**. Zbog toga integrisani USB Serial/JTAG interfejs nije moguće koristiti za flashing firmware-a, USB serijsku komunikaciju ili JTAG debagovanje na ploči broj 5. Header **H3** je nakon zamene mapiranja povezan sa USB OTG FS interfejsom i može se koristiti za USB OTG FS funkcionalnost ili kao pristup odgovarajućim GPIO pinovima. Funkcionalnost ostalih podsistema na ploči nije pogođena ovom promenom.

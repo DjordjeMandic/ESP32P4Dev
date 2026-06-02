@@ -1,5 +1,6 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
+  "idf.extensionActivationMode": "always",
   "idf.openOcdConfigs": [
     "board/esp32p4-builtin.cfg"
   ],
@@ -12,7 +13,7 @@
   "clangd.arguments": [
     "--background-index",
     "--query-driver=**",
-    "--compile-commands-dir=/home/dman/Git/ESP32P4Dev/Test Examples/P4/i2c_tools/build"
+    "--compile-commands-dir=/home/dman/Development/ESP-IDF/Projects/Examples/co5300_test/build"
   ],
   "idf.flashType": "UART"
 }
