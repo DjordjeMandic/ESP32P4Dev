@@ -9,12 +9,18 @@ Korišćeni modul sastoji se od:
 - `CO5300` display kontrolera
 - `CST820B` I2C touch kontrolera
 
-Touch kontroler povezan je na sledeće GPIO pinove:
+### Pinout
 
-|Signal|GPIO|
-|---|---|
-|SDA|GPIO23|
-|SCL|GPIO22|
+| Signal | GPIO |
+|----------|----------|
+| Touch SDA | GPIO23 |
+| Touch SCL | GPIO22 |
+| Touch RST | GPIO20 |
+| Touch INT | GPIO21 |
+| Display RST | GPIO13 |
+| Display TE | GPIO12 |
+
+Touch kontroler povezan je na I2C magistralu preko GPIO23 i GPIO22, dok se GPIO20 i GPIO21 koriste za reset i interrupt signal touch kontrolera. Za upravljanje displejem koristi se GPIO13 kao hardverski reset signal, dok je GPIO12 povezan na TE (Tearing Effect) signal displeja.
 
 ---
 
